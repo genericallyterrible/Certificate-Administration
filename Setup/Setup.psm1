@@ -292,7 +292,7 @@ function Rename-Database {
 
     }
 
-    Write-Host "Successfully renamed to: $NewDBQuotedPS"
+    Write-Host "Successfully renamed to: $NewDBQuotedPS" -ForegroundColor Green
     return $NewDBName
 }
 
@@ -379,17 +379,17 @@ function Initialize-Database {
 
     if ($LogsToKeep -ne 0) {
         if (Test-Path $LogFile) {
-            Write-Host "Log written to: `"$LogFile`""
+            Write-Host "Log written to: `"$LogFile`"" -ForegroundColor Yellow
         } else {
-            Write-Host "Failed to write log to: `"$LogFile`""
+            Write-Host "Failed to write log to: `"$LogFile`"" -ForegroundColor Red
         }
     }
 
 
     if ($LastExitCode -ne 0) {
-        Write-Host "Could not complete setup for: `"$DatabaseName`" on server: `"$($ServerName.Value)`""
+        Write-Host "Could not complete setup for: `"$DatabaseName`" on server: `"$($ServerName.Value)`"" -ForegroundColor Red
     } else {
-        Write-Host "Setup completed for: `"$DatabaseName`" on server: `"$($ServerName.Value)`""
+        Write-Host "Setup completed for: `"$DatabaseName`" on server: `"$($ServerName.Value)`"" -ForegroundColor Green
     }
     Start-Sleep 1
 }
