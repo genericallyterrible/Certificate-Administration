@@ -38,7 +38,7 @@ All requests can be created on the fly as well. Simply create a request and then
 
 ## To Do
 
-- [ ] Create a procedure to remove tracked objects that no longer exist (were deleted). Currently, if a tracked object is deleted and any [Revoke Procedure](./SQL/Programmability/Procedures/Permission/_Revoke/) is executed, the proc will fail since it cannot validate the non-existing object.
+- [ ] Create a procedure to remove tracked objects that no longer exist (were deleted). Currently, if a tracked object is deleted and any [Revoke Procedure](./SQL/Programmability/Stored%20Procedures/Permission/_Revoke/) is executed, the proc will fail since it cannot validate the non-existing object.
   - [ ] Source/target databases that no longer exist (cascade)
   - [ ] Source/target objects that no longer exist (cascade)
   - [ ] Source/target roles that no longer exist (cascade)
