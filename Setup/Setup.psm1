@@ -330,13 +330,26 @@ function Initialize-Database {
 
         $Command.AddSQLFile($RepoRoot, $SetupSQL)
 
-        Get-ChildItem $SQLDir -Recurse -filter *.sql |
+        # Add tables
+        Get-ChildItem ($SQLDir + "\Tables") -Recurse -filter *.sql |
         ForEach-Object {
-            # Write-Host $_.FullName # Debugging
             $Command.AddSQLFile($RepoRoot, $_.FullName)
         }
+
         # Add the tables twice so tables that depended on one another are successfully created
         Get-ChildItem ($SQLDir + "\Tables") -Recurse -filter *.sql |
+        ForEach-Object {
+            $Command.AddSQLFile($RepoRoot, $_.FullName)
+        }
+
+        # Add views
+        Get-ChildItem ($SQLDir + "\Views") -Recurse -filter *.sql |
+        ForEach-Object {
+            $Command.AddSQLFile($RepoRoot, $_.FullName)
+        }
+
+        # Add stored proceduress
+        Get-ChildItem ($SQLDir + "\Programmability") -Recurse -filter *.sql |
         ForEach-Object {
             $Command.AddSQLFile($RepoRoot, $_.FullName)
         }
