@@ -336,7 +336,7 @@ function Initialize-Database {
             $Command.AddSQLFile($RepoRoot, $_.FullName)
         }
 
-        # Add the tables twice so tables that depended on one another are successfully created
+        # Add the tables twice so tables that depend on one another are successfully created
         Get-ChildItem ($SQLDir + "\Tables") -Recurse -filter *.sql |
         ForEach-Object {
             $Command.AddSQLFile($RepoRoot, $_.FullName)
